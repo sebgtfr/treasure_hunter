@@ -1,0 +1,21 @@
+{
+  "name": "treasure_hunter",
+  "version": "1.0.0",
+  "description": "Treasure hunter test project",
+  "main": "src/index.ts",
+  "repository": "git@github.com:sebgtfr/treasure_hunter.git",
+  "author": "Sébastien Le Maire",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "ts-node ./src/index.ts"
+  },
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.14"
+  }
+}
