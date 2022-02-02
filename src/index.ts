@@ -4,14 +4,14 @@ import { getMapFromFile, setMapOnOutputFile } from './file';
 import { parseFromDescriptionToMap, parseMapToDescription } from './parseMap';
 import play from './play';
 
-const args = minimist(process.argv);
+const args = minimist(process.argv.slice(2));
 
-const mapParam = args['_'][2];
-const outputParam = args['_'][3];
+const mapParam = args['_'][0];
+const outputParam = args['_'][1];
 
 if (!mapParam || !outputParam || args.h || args.help) {
     console.log(`
-yarn start [OPTIONS] <map> <output>
+"./script.js" <map> <output> [OPTIONS]
 \t<map>             File containing the input map.
 \t<output>          Generated output file name.
 OPTIONS:

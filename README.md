@@ -18,7 +18,7 @@
 
 # 2) Execution
 
-#### `yarn start [OPTIONS] map output`
+#### `yarn start map output [OPTIONS]`
 
 Runs the script using the following parameters :
 
@@ -31,6 +31,18 @@ You can add the following options :
 * **-r | --render-map** Output the initial map and the final map on the console.
 
 * **-h | --help** Render the help.
+
+#### `yarn build:start map output [OPTIONS]`
+
+Same as `yarn start` except that you need to run `yarn build` beforehand.
+
+#### `yarn build`
+
+Generate build directory converting typescript to javascript.
+
+#### `yarn test`
+
+Execute Jest tests.
 
 # 3) Rules
 
