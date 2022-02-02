@@ -103,7 +103,8 @@ class Map {
 
         this._maxNameLength = Math.max(this._maxNameLength, name.length);
 
-        this._adventurers.push({
+        // Since file is parse from the end, we need to unshift to ensure the correct adventurer order.
+        this._adventurers.unshift({
             name,
             x,
             y,
