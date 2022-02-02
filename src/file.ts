@@ -2,8 +2,6 @@ import fs from 'fs';
 import path from 'path';
 import { EOL } from 'os';
 
-import Map from './Map';
-
 export const getMapFromFile = (mapFile: string) => {
     const mapFileName = path.resolve(__dirname, '..', mapFile);
 
