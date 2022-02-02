@@ -1,11 +1,12 @@
 import { EOL } from 'os';
 import { isNumeric } from './helper';
-import { EMapItem, EMapParsing, EOrientation } from './interfaces';
+import { EMapItem, EMapOutputCase, EMapParsing } from './interfaces';
 
 import Map from './Map';
 
 const g_commentChar = '#';
 const g_mapParsingItems = Object.values(EMapParsing);
+const g_mapOutputCase = Object.values(EMapOutputCase);
 
 const createMap = (pos: number, width: string, height: string) => {
     if (!isNumeric(width)) {
@@ -245,18 +246,33 @@ export const parseFromDescriptionToMap = (mapDescription: string): Map => {
 };
 
 export const parseMapToDescription = (map: Map): string => {
-    let output = '';
+    const output = [`${EMapParsing.MAP} - ${map.width} - ${map.height}`];
 
     for (let y = 0; y < map.height; ++y) {
         for (let x = 0; x < map.width; ++x) {
-            map.get(x, y);
+            const content = map.getCaseContentForFile(x, y);
 
-            const content = map.getCaseContentForMap(x, y);
-
-            output += content;
+            switch (content) {
+                case EMapOutputCase.MOUNTAIN:
+                    output.push(`${EMapParsing.MOUNTAIN} - ${x} - ${y}`);
+                    break;
+                case EMapOutputCase.TREASURE:
+                    output.push(`${EMapParsing.TREASURE} - ${x} - ${y} - ${map.get(x, y)}`);
+                    break;
+            }
         }
-        output += EOL;
     }
 
-    return output;
+    output.sort((a, b) => {
+        const posA = g_mapOutputCase.indexOf(a[0] as EMapOutputCase);
+        const posB = g_mapOutputCase.indexOf(b[0] as EMapOutputCase);
+
+        return posA - posB;
+    });
+
+    for (const adventurer of map.adventurers) {
+        output.push(`${EMapOutputCase.ADVENTURER} - ${adventurer.name} - ${adventurer.x} - ${adventurer.y} - ${adventurer.orientation} - ${adventurer.nbTreasure}`);
+    }
+
+    return output.join(EOL);
 };

@@ -75,16 +75,14 @@ class Map {
             case EMapItem.MOUNTAIN:
                 return EMapOutputCase.MOUNTAIN;
             case EMapItem.EMPTY:
-                const adventurer = this.getAdventurer(x, y);
-
-                return adventurer ? EMapOutputCase.ADVENTURER : '';
+                return '';
             default:
                 return EMapOutputCase.TREASURE;
         }
     }
 
     public isEmpty(x: number, y: number) {
-        return this.getCaseContentForFile(x, y) === '';
+        return this.getCaseContentForFile(x, y) === '' && this.getAdventurer(x, y) === undefined;
     }
 
     public addAdventurer(name: TAdventurer['name'], x: number, y: number, orientation: string, moveSequence: string) {

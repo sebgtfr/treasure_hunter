@@ -33,10 +33,10 @@ export enum EMapItem {
 
 // Enum use by Map to create output format.
 export enum EMapOutputCase {
-    EMPTY = '.',
     MOUNTAIN = 'M',
     TREASURE = 'T',
-    ADVENTURER = 'A'    
+    ADVENTURER = 'A',
+    EMPTY = '.',
 };
 
 export type TAdventurer = {

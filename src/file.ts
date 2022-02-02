@@ -19,11 +19,17 @@ export const getMapFromFile = (mapFile: string) => {
     }
 }
 
-export const setMapOnOutputFile = (output: string, map: Map) => {
+export const setMapOnOutputFile = (output: string, mapDescription: string) => {
     const mapFileName = path.resolve(__dirname, '..', output);
 
-    fs.writeFileSync(mapFileName, "", {
-        encoding: 'utf8',
-        flag: 'w+'
-    });
+    try {
+        fs.writeFileSync(mapFileName, mapDescription, {
+            encoding: 'utf8',
+            flag: 'w+'
+        });
+    }
+    catch (e: any) {
+        console.error(`Failed to write on "${output}"${EOL}${e.message}`);
+        process.exit(1);
+    }
 };

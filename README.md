@@ -18,13 +18,19 @@
 
 # 2) Execution
 
-#### `yarn start [OPTIONS]`
+#### `yarn start [OPTIONS] map output`
 
-Runs the script using the following options :
+Runs the script using the following parameters :
 
-* **--map=file** File containing the input map.
+* **map** File containing the input map.
 
-* **--output=file** Output File containing the output map. If not set, the output map will be render on the console
+* **output** Generated output file name.
+
+You can add the following options :
+
+* **-r | --render-map** Output the initial map and the final map on the console.
+
+* **-h | --help** Render the help.
 
 # 3) Rules
 
