@@ -22,9 +22,9 @@
 
 Runs the script using the following options :
 
-* **--map=<file>** File containing the input map.
+* **--map=file** File containing the input map.
 
-* **--output=<file>** Output File containing the output map. If not set, the output map will be render on the console
+* **--output=file** Output File containing the output map. If not set, the output map will be render on the console
 
 # 3) Rules
 

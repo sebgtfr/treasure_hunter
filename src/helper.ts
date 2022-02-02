@@ -1,0 +1,1 @@
+export const isNumeric = (num: string) => num.length > 0 && !isNaN(+num);
